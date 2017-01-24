@@ -6,6 +6,20 @@ This building block provides easy access to the Blackboard Gradebook via a REST
 
 **Currently under development. YMMV**
 
+
+q216_and_SASS branch
+--------------------
+
+The B2 required a number of minor changes to work with Blackboard Learn Q2 2016 & SaaS releases. As I type this, I realize I spelled the branch name incorrectly. Alas.
+
+#### Changes
+
+* disabled the b2deploy task, since it's http only and the q2 developer VM requires https
+* upgraded Gradle to version 3.3
+* upgraded Spring to version 4.3.5
+* "fixed" two lines of code that were causing errors during compilation. I can tell you for sure, they don't cause errors when compiling now. Otherwise, these changes may cause crazy things to happen.  Probably not, but I thought I'd say something scary, just in case. 
+
+
 Building
 ----------
 To build this project, clone the project to a local directory ````cd```` to the directory, then run the following command for unix/osx.
