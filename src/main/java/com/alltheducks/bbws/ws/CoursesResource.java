@@ -100,7 +100,11 @@ public class CoursesResource {
         try {
             Course bbCourse = courseDbLoader.loadByCourseId(courseId);
 
-            List<GradableItem> gradableItems = gradableItemDAO.loadCourseGradebook(bbCourse.getId(), 0);
+            // TODO: go over changes to loadCourseGradebook() - two new arguments are required
+            // the code below will set
+            //      visibleToStudentOnly == false (i.e. visibleToStudents = false)
+            //      anonymousFlag == 0 (anonymousGrading is False)
+            List<GradableItem> gradableItems = gradableItemDAO.loadCourseGradebook(bbCourse.getId(), false, 0, 0);
 
             assessmentItems = convertGradableItemsToAssessmentDtos(gradableItems);
 
@@ -167,7 +171,8 @@ public class CoursesResource {
                 //TODO This is probably not very efficient. Fix it.
                 User user = userDbLoader.loadUserByCourseMembership(grade.getCourseUserId());
                 MarkDto mark = new MarkDto();
-                String gradeVal = grade.getGrade(gradableItem.getAggregationModel());
+                // TODO Check that we always want getGrade.isForPostedGrade to be true
+                String gradeVal = grade.getGrade(gradableItem.getAggregationModel(), true);
                 Double scoreVal = null;
                 try {
                     scoreVal = Double.parseDouble(gradeVal);
