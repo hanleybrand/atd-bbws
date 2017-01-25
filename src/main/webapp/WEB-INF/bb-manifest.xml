@@ -10,7 +10,7 @@
         <description value="plugin.description"/>
         <default-locale value="en_GB"/>
         <webapp-type value="javaext" />
-        <version value="0.1.5 for 3000.1.0 and up"/>
+        <version value="0.1.5"/>
         <requires>
             <bbversion value="9.1"/>
         </requires>
